@@ -1,5 +1,9 @@
 import {createStore} from 'redux';
+
+
 var initState = {
+    
+
     mode:"READ",
     welcome_content:{
         title:'null',
@@ -30,6 +34,7 @@ var initState = {
     ]
 }
 function reducer(state=initState, action) {
+    
     if(action.type === 'WELCOME'){
         return {...state, mode:'WELCOME'};
     }

@@ -80,14 +80,14 @@ article {
 
 .arti__question {
     font-family: 'Nanum Gothic', sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     border-top: 1px solid #bcbcbc;
     padding: 15px 12px;
 }
 
 .arti__answer {
     font-family: 'Nanum Gothic', sans-serif;
-    font-size: 18px;
+    font-size: 15px;
     padding-left: 20px;
     max-height: 0px;
     overflow: hidden;
@@ -152,12 +152,16 @@ article {
         padding-left: 135px;
     }
 
+    .arti__title {
+        font-size : 14px;
+    }
+
     .arti__question {
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .arti__answer {
-        font-size: 14px;
+        font-size: 10px;
     }
 }
 
@@ -189,12 +193,16 @@ article {
         font-size: 14px;
     }
 
+    .arti__title {
+        font-size : 16px;
+    }
+
     .arti__question {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .arti__answer {
-        font-size: 16px;
+        font-size: 12px;
     }
 }
 

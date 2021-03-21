@@ -7,8 +7,10 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 export default class Article extends Component {
     render(){
+        
         const titles = this.props.title.map((value,index) => {
-            if(index !== 0) {
+            if(true) {
+               
                 return (
                     <div>
                         <input type="checkbox" class="checkbox" id={index} />
@@ -19,9 +21,11 @@ export default class Article extends Component {
                         </label>
                         <p className="arti__answer">
                             {this.props.desc[index]}
+
                             <IconButton color="primary" aria-label="add to shopping cart">
                                 <AddShoppingCartIcon />
                             </IconButton>
+                            
                         </p>
                         
                     </div>
