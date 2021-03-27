@@ -5,27 +5,31 @@ import IconButton from "@material-ui/core/IconButton";
 import ReportIcon from "@material-ui/icons/Report";
 
 const ProfilePost = ({ post }) => {
-  const { id, question, answer, classified } = post;
+  // const { id, question, answer, classified } = post;
+
+  console.log(post);
 
   const [isPostActive, setIsPostActive] = useState(false);
   const [buttonColor, setButtonColor] = useState("de726b");
 
   function chooseButtonColor() {
-    switch (classified) {
-      case "전공":
+    switch (post.classified) {
+      case "major":
         setButtonColor("color78934F");
         break;
-      case "생활":
+      case "living":
         setButtonColor("color9C5B5B");
         break;
-      case "등록":
+      case "enrollment":
         setButtonColor("colorE7AB20");
         break;
-      case "장학금":
+      case "scholarship":
         setButtonColor("colorDE726B");
         break;
-      case "학생지원":
+      case "support":
         setButtonColor("color4F5A93");
+        break;
+      default:
         break;
     }
   }
@@ -37,11 +41,15 @@ const ProfilePost = ({ post }) => {
     chooseButtonColor();
   }, []);
 
+  const deleteScrapElem = () => {
+    alert("delete this");
+  };
+
   return (
     <div className="profilepage__post">
       {/* 해당답변이 보여질 카드 */}
       <button onClick={handlePostActive} className={buttonColor}>
-        Q. {question}
+        Q. {post.question}
       </button>
       {/* 질문사항이 보여질 버튼*/}
       {isPostActive ? (
@@ -51,10 +59,14 @@ const ProfilePost = ({ post }) => {
               <ReportIcon />
             </IconButton>
             <IconButton>
-              <DeleteIcon />
+              <DeleteIcon onClick={deleteScrapElem} />
             </IconButton>
           </header>
-          <p>A. {answer}</p>
+          <p>A. {post.answer}</p>
+          {post.pic &&
+            post.pic.map((link) => (
+              <img className="post_pic" src={link} alt="" />
+            ))}
         </div>
       ) : null}
     </div>

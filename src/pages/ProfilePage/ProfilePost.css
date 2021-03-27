@@ -48,3 +48,9 @@
   color: #808080;
   text-align: center;
 }
+
+.post_pic {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}

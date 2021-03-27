@@ -40,7 +40,7 @@ function App() {
               .collection("users")
               .doc(user.uid)
               .onSnapshot((snapshot) => {
-                setUser(snapshot.data());
+                setUser({ ...snapshot.data() });
               });
           } else {
             firestoreService
@@ -72,6 +72,7 @@ function App() {
         snapshot.docs.map((doc) => {
           return {
             ...doc.data(),
+            id: doc.id,
           };
         })
       );
@@ -81,6 +82,7 @@ function App() {
         snapshot.docs.map((doc) => {
           return {
             ...doc.data(),
+            id: doc.id,
           };
         })
       );
@@ -90,6 +92,7 @@ function App() {
         snapshot.docs.map((doc) => {
           return {
             ...doc.data(),
+            id: doc.id,
           };
         })
       );
@@ -99,6 +102,7 @@ function App() {
         snapshot.docs.map((doc) => {
           return {
             ...doc.data(),
+            id: doc.id,
           };
         })
       );
@@ -108,6 +112,7 @@ function App() {
         snapshot.docs.map((doc) => {
           return {
             ...doc.data(),
+            id: doc.id,
           };
         })
       );
@@ -133,7 +138,14 @@ function App() {
               />
             </Route>
             <Route exact path="/profile">
-              <ProfilePage />
+              <ProfilePage
+                user={user}
+                enrollmentData={enrollment}
+                majorData={major}
+                livingData={living}
+                scholarshipData={scholarship}
+                supportData={support}
+              />
             </Route>
           </Switch>
           <Redirect from="*" to="/login" />

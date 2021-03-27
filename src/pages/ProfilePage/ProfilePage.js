@@ -4,26 +4,91 @@ import { IconButton } from "@material-ui/core";
 import { authService } from "../../firebase";
 import "./ProfilePage.css";
 import { Link } from "react-router-dom";
-import ProfilePost from "./ProfilePost";
-import { SignalCellularNullOutlined } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
-import dummyPosts from "./dummyPosts.json";
 import ProfileTabs from "./ProfileTabs";
 
-const ProfilePage = () => {
+const ProfilePage = ({
+  user,
+  user: {
+    scrap: { enrollment, living, major, scholarship, support },
+  },
+  enrollmentData,
+  majorData,
+  livingData,
+  scholarshipData,
+  supportData,
+}) => {
   let history = useHistory();
 
-  const [user, setUser] = useState(null);
+  const [loggingUser, setLoggingUser] = useState(null);
+
+  const [enrollmentList, setEnrollmentList] = useState([]);
+  const [livingList, setLivingList] = useState([]);
+  const [majorList, setMajorList] = useState([]);
+  const [scholarshipList, setScholarshipList] = useState([]);
+  const [supportList, setSupportList] = useState([]);
 
   const loadCurrentUser = async () => {
     await authService.onAuthStateChanged((user) => {
-      setUser({ ...user });
+      setLoggingUser({ ...user });
+    });
+  };
+
+  const setScrapListsData = () => {
+    enrollmentData.forEach((target) => {
+      enrollment?.forEach((id) => {
+        if (target.id === id) {
+          setEnrollmentList((prev) => {
+            return [...prev, target];
+          });
+        }
+      });
+    });
+    majorData.forEach((target) => {
+      major?.forEach((id) => {
+        if (target.id === id) {
+          setMajorList((prev) => {
+            return [...prev, target];
+          });
+        }
+      });
+    });
+    livingData.forEach((target) => {
+      living?.forEach((id) => {
+        if (target.id === id) {
+          setLivingList((prev) => {
+            return [...prev, target];
+          });
+        }
+      });
+    });
+    scholarshipData.forEach((target) => {
+      scholarship?.forEach((id) => {
+        if (target.id === id) {
+          setScholarshipList((prev) => {
+            return [...prev, target];
+          });
+        }
+      });
+    });
+    supportData.forEach((target) => {
+      support?.forEach((id) => {
+        if (target.id === id) {
+          setSupportList((prev) => {
+            return [...prev, target];
+          });
+        }
+      });
     });
   };
 
   useEffect(() => {
     loadCurrentUser();
   }, []);
+
+  useEffect(() => {
+    setScrapListsData();
+  }, [enrollment, living, major, scholarship, support]);
 
   const handleLogOut = () => {
     authService.signOut();
@@ -42,23 +107,26 @@ const ProfilePage = () => {
       <section className="profilepage__main">
         <div className="profilepage__userProfile">
           <div className="profilepage__userInfo">
-            <img className="profilepage__userPic" src={user?.photoURL} />
-            <h4 className="profilepage__userName">{user?.displayName}</h4>
+            <img
+              className="profilepage__userPic"
+              src={loggingUser?.photoURL}
+              alt="user"
+            />
+            <h4 className="profilepage__userName">
+              {loggingUser?.displayName}
+            </h4>
           </div>
           <div className="profilepage__btnGroup">
             <button onClick={handleLogOut}>Log out</button>
           </div>
         </div>
-        <ProfileTabs />
-        {/* <div className="profilepage__postlistWrapper">
-          <ul className="profilepage__postlist">
-            {dummyPosts.map((post) => (
-              <li>
-                <ProfilePost post={post} />
-              </li>
-            ))}
-          </ul>
-        </div> */}
+        <ProfileTabs
+          enrollmentList={enrollmentList}
+          majorList={majorList}
+          scholarshipList={scholarshipList}
+          livingList={livingList}
+          supportList={supportList}
+        />
       </section>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -6,7 +6,6 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import dummyPosts from "./dummyPosts.json";
 import ProfilePost from "./ProfilePost";
 
 function TabPanel(props) {
@@ -54,9 +53,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProfileTabs() {
+export default function ProfileTabs({
+  enrollmentList,
+  majorList,
+  scholarshipList,
+  livingList,
+  supportList,
+}) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -77,7 +82,27 @@ export default function ProfileTabs() {
       </AppBar>
       <TabPanel value={value} index={0}>
         <ul className="profilepage__postlist">
-          {dummyPosts.map((post) => (
+          {enrollmentList?.map((post) => (
+            <li>
+              <ProfilePost post={post} />
+            </li>
+          ))}
+          {majorList?.map((post) => (
+            <li>
+              <ProfilePost post={post} />
+            </li>
+          ))}
+          {scholarshipList?.map((post) => (
+            <li>
+              <ProfilePost post={post} />
+            </li>
+          ))}
+          {livingList?.map((post) => (
+            <li>
+              <ProfilePost post={post} />
+            </li>
+          ))}
+          {supportList?.map((post) => (
             <li>
               <ProfilePost post={post} />
             </li>
