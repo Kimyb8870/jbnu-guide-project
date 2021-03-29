@@ -9,8 +9,19 @@ export default class Article extends Component {
     render(){
         
         const titles = this.props.title.map((value,index) => {
+            var test = <b></b>;
             if(true) {
-               
+                if(this.props.pic[index] !== undefined)
+                {
+                    console.log(this.props.pic[index]);
+                    test = this.props.pic[index].map(values => {
+                        console.log(values);
+                        //values = `"`+values+`"`;
+                        console.log(values);
+                        return <img class = "arti__image" src={values}></img>
+                    })//<img src={this.props.pic[index]}></img>
+
+                }
                 return (
                     <div>
                         <input type="checkbox" class="checkbox" id={index} />
@@ -20,6 +31,8 @@ export default class Article extends Component {
                             </div>
                         </label>
                         <p className="arti__answer">
+                            {test}
+                            <br/>
                             {this.props.desc[index]}
 
                             <IconButton color="primary" aria-label="add to shopping cart">

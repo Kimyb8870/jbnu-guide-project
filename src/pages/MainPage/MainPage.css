@@ -15,6 +15,12 @@ a {
     text-decoration: none;
 }
 
+img {
+    width:600px;
+    height:400px;
+    object-fit: scale-down;
+}
+
 .checkbox {
     
     display: none;
@@ -88,7 +94,7 @@ article {
 .arti__answer {
     font-family: 'Nanum Gothic', sans-serif;
     font-size: 15px;
-    padding-left: 20px;
+    padding-left: 40px;
     max-height: 0px;
     overflow: hidden;
     transition: all 500ms;
