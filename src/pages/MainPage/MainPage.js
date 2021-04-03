@@ -21,7 +21,15 @@ const MainPage = ({
     <div>
       <NavContainer></NavContainer>
 
-      <ArticleContainer></ArticleContainer>
+      <ArticleContainer
+        user={user}
+        enrollment={enrollment}
+        living={living}
+        major={major}
+        scholarship={scholarship}
+        support={support}
+        />
+
     </div>
   );
 };
