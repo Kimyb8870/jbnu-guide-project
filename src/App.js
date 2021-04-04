@@ -120,7 +120,6 @@ function App() {
   }, []);
 
   return (
-    
     <div className="App">
       {init ? (
         <Router>
@@ -139,14 +138,7 @@ function App() {
               />
             </Route>
             <Route exact path="/profile">
-              <ProfilePage
-                user={user}
-                enrollmentData={enrollment}
-                majorData={major}
-                livingData={living}
-                scholarshipData={scholarship}
-                supportData={support}
-              />
+              <ProfilePage />
             </Route>
           </Switch>
           <Redirect from="*" to="/login" />
