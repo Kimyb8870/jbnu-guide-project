@@ -1,13 +1,18 @@
 .profilepage {
-  background-color: #eee;
+  background-color: #eeeeee;
   min-height: 100vh;
 }
 
 .profilepage__header {
   background-color: white;
+  height: 6vh;
 }
 
 .profilepage__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 94vh;
 }
 
 .profilepage__userProfile {
@@ -73,4 +78,113 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+}
+
+.profilepage__submit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.profilepage__submit > p {
+  color: #8b8b8b;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profilepage__submit > button {
+  width: 80%;
+  height: 30px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 59, 59, 0.66);
+}
+
+.profilepage__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80vw;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.profilepage__form > p {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #8b8b8b;
+}
+
+.profilepage__form > span {
+  font-size: 12px;
+  color: #8b8b8b;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.profilepage__form > textarea {
+  display: block;
+  width: 70vw;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+}
+
+.profilepage__form > textarea::placeholder {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.profilepage__form > textarea:nth-of-type(1) {
+  height: 10vh;
+}
+
+.profilepage__form > textarea:nth-of-type(2) {
+  height: 20vh;
+}
+
+.profilepage__form > textarea:nth-of-type(3) {
+  height: 5vh;
+  margin-bottom: 30px;
+}
+
+.profilepage__form > button {
+  width: 80%;
+  height: 30px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 59, 59, 0.66);
+  transition: all 0.3s;
+}
+
+.profilepage__form > button:hover {
+  background: rgba(255, 106, 106, 0.66);
+}
+
+.profilepage__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.profilepage__footer > p {
+  font-size: 10px;
+  color: #8b8b8b;
+  text-align: center;
+}
+
+.profilepage__footer > p:nth-of-type(1) {
+  margin-bottom: 10px;
 }
